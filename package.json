@@ -1,0 +1,101 @@
+{
+  "name": "wikiscores",
+  "version": "1.0.0",
+  "description": "Command-line tool that extracts structured data about all of the US Supreme Court Cases since 2000",
+  "main": "src/index.js",
+  "engines": {
+    "node": "10.12.0",
+    "npm": "6.4.1"
+  },
+  "scripts": {
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
+    "lint": "eslint .",
+    "prettier": "prettier --single-quote --no-semi --write '**/*.{js,json}'",
+    "start": "NODE_PATH=. node src/index.js",
+    "test:unit:cov": "find ./test/unit -name '*.spec.js' | NODE_ENV=test NODE_PATH=. xargs nyc mocha --require ./test/unit/test_helper.js",
+    "test:unit": "find ./test/unit -name '*.spec.js' | NODE_ENV=test NODE_PATH=. xargs mocha --require ./test/unit/test_helper.js",
+    "test": "npm run test:unit"
+  },
+  "keywords": [
+    "wikipedia"
+  ],
+  "author": "Dave Sag <davesag@gmail.com>",
+  "contributors": [
+    "Matthew Sag <matthewsag@gmail.com>"
+  ],
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "**/*.{js,json}": [
+        "prettier --single-quote --no-semi --write",
+        "git add"
+      ]
+    }
+  },
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 100,
+    "statements": 100,
+    "functions": 100,
+    "branches": 100,
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "src/index.js",
+      "src/errors.js",
+      "src/models/index.js",
+      "src/utils/logger.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "all": true,
+    "cache": true
+  },
+  "devDependencies": {
+    "ajv": "^6.5.5",
+    "chai": "^4.2.0",
+    "chai-almost": "^1.0.1",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^5.9.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-mocha": "^5.2.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "faker": "^4.1.0",
+    "husky": "^1.2.0",
+    "lint-staged": "^8.1.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
+    "prettier": "^1.15.2",
+    "proxyquire": "^2.1.0",
+    "sinon": "^7.1.1",
+    "sinon-chai": "^3.3.0"
+  },
+  "repository": "https://github.com/davesag/wikiscores.git",
+  "bugs": {
+    "url": "https://github.com/davesag/wikiscores/issues"
+  },
+  "homepage": "https://github.com/davesag/wikiscores#readme",
+  "dependencies": {
+    "camelcase": "^5.0.0",
+    "cheerio": "^1.0.0-rc.2",
+    "csv-writer": "^1.2.0",
+    "decamelize": "^2.0.0",
+    "query-string": "^6.2.0",
+    "superagent": "^4.0.0",
+    "superagent-throttle": "^0.2.5"
+  }
+}
