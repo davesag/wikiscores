@@ -1,5 +1,5 @@
 const { expect } = require('chai')
-const { stub, spy } = require('sinon')
+const { stub } = require('sinon')
 const proxyquire = require('proxyquire')
 
 describe('src/extractors/extract', () => {
