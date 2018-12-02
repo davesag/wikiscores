@@ -38,9 +38,3 @@ run()
   .catch(err => {
     console.error('error', err)
   })
-
-// fetchPageInfo("United_States_v._Tohono_O'odham_Nation").then(parseInfo).then(data => {
-//   console.log('done', data)
-// }).catch(err => {
-//   console.error('error', err)
-// })
