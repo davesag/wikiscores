@@ -4,6 +4,7 @@ const parseTerms = require('src/parsers/parseTerms')
 const parseCases = require('src/parsers/parseCases')
 const parseInfo = require('src/parsers/parseInfo')
 const writeCSV = require('src/writeCSV')
+const convertTypes = require('src/parsers/convertTypes')
 
 const notNull = item => item !== null && item !== undefined
 
@@ -30,7 +31,7 @@ const run = async () => {
   )
   console.log('loaded', casePages.length, 'case pages')
 
-  return casePages.map(parseInfo)
+  return convertTypes(casePages.map(parseInfo))
 }
 
 run()

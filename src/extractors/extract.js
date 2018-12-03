@@ -18,6 +18,7 @@ const extract = (extractors, base) =>
         : base
         ? extractTableData(`${base}-${selector}`, suffix)
         : extractTableData(selector, suffix)
+
     return acc
   }, {})
 
