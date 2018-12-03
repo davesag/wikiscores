@@ -93,7 +93,6 @@
     "camelcase": "^5.0.0",
     "cheerio": "^1.0.0-rc.2",
     "csv-writer": "^1.2.0",
-    "date-pattern": "^1.0.3",
     "decamelize": "^2.0.0",
     "query-string": "^6.2.0",
     "superagent": "^4.0.0",
