@@ -15,13 +15,6 @@ describe('src/extractors/extractCases', () => {
 
   const $ = stub().returns(cheerio)
 
-  const resetStubs = () => {
-    cheerio.filter.resetHistory()
-    cheerio.map.resetHistory()
-    cheerio.toArray.resetHistory()
-    $.resetHistory()
-  }
-
   before(() => {
     extractCases($)
   })

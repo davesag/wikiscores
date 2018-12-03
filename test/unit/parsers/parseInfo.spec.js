@@ -5,7 +5,7 @@ const proxyquire = require('proxyquire')
 describe('src/parsers/parseInfo', () => {
   const extractData = stub()
 
-  const parseInfo = proxyquire('src/parsers/parseInfo', {
+  proxyquire('src/parsers/parseInfo', {
     'src/parsers/extractData': extractData
   })
 

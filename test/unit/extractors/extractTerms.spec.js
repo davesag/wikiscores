@@ -15,13 +15,6 @@ describe('src/extractors/extractTerms', () => {
 
   const $ = stub().returns(fakeCheerio)
 
-  const resetStubs = () => {
-    fakeCheerio.filter.resetHistory()
-    fakeCheerio.map.resetHistory()
-    fakeCheerio.toArray.resetHistory()
-    $.resetHistory()
-  }
-
   before(() => {
     extractTerms($)
   })

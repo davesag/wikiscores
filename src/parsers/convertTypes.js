@@ -1,3 +1,5 @@
+/* eslint no-unused-vars: "off" */
+
 const PARSE_PATTERN = /([\d]{2}):([\d]{2}),\s([\d]{1,2})\s([A-Za-z]+)\s([\d]{4})/
 
 const MONTHS = {
@@ -22,7 +24,7 @@ const toDate = date => {
   try {
     const matched = date.match(PARSE_PATTERN)
     if (!matched) return ''
-    const [all, hour, minute, day, monthName, year] = matched
+    const [_, hour, minute, day, monthName, year] = matched
     const month = `${MONTHS[monthName]}`.padStart(2, '0')
 
     return `${year}-${month}-${day.padStart(2, '0')}T${hour}:${minute}:00.000Z`

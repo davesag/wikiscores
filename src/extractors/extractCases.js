@@ -1,3 +1,5 @@
+/* eslint no-unused-vars: "off" */
+
 const { parse } = require('query-string')
 
 /* istanbul ignore next */

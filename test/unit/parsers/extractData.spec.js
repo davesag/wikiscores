@@ -20,17 +20,6 @@ describe('src/parsers/extractData', () => {
 
   const extractors = { test: testExtractor }
 
-  const $ = stub().returns(cheerio)
-
-  const resetStubs = () => {
-    cheerio.filter.resetHistory()
-    cheerio.map.resetHistory()
-    cheerio.toArray.resetHistory()
-    functionName.resetHistory()
-    testExtractor.resetHistory()
-    $.resetHistory()
-  }
-
   const functions = ['test']
 
   const extractData = proxyquire('src/parsers/extractData', {
@@ -41,13 +30,10 @@ describe('src/parsers/extractData', () => {
 
   const html = 'some html'
 
-  let extractor
-  let result
-
   before(() => {
     functionName.returns('test')
-    extractor = extractData(functions)
-    result = extractor(html)
+    const extractor = extractData(functions)
+    extractor(html)
   })
 
   it('called cheerio.load with html', () => {

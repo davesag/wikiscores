@@ -16,16 +16,17 @@ describe('src/extractors/extractTableData', () => {
   }
 
   const selector = 'selector'
-  let result
 
   context('without a suffix', () => {
     before(() => {
       const extract = extractTableData(selector)
-      result = extract($)
+      extract($)
     })
 
+    after(resetStubs)
+
     it('cheerio was called with the right selector', () => {
-      expect($).to.have.been.calledWith(`${selector} > td:last-child`)
+      expect($).to.have.been.calledOnceWith(`${selector} > td:last-child`)
     })
   })
 
@@ -34,11 +35,13 @@ describe('src/extractors/extractTableData', () => {
 
     before(() => {
       const extract = extractTableData(selector, suffix)
-      result = extract($)
+      extract($)
     })
 
+    after(resetStubs)
+
     it('cheerio was called with the right selector', () => {
-      expect($).to.have.been.calledWith(
+      expect($).to.have.been.calledOnceWith(
         `${selector} > td:last-child > ${suffix}`
       )
     })
