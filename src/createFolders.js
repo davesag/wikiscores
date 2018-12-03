@@ -1,8 +1,5 @@
 const mkdirp = require('mkdirp')
 const path = require('path')
-const { promisify } = require('util')
-
-const mkdir = promisify(mkdirp)
 
 const createFolders = async fullPath => {
   try {
