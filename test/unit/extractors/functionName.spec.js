@@ -1,5 +1,4 @@
 const { expect } = require('chai')
-const { stub } = require('sinon')
 
 const functionName = require('src/extractors/functionName')
 

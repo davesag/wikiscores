@@ -1,5 +1,3 @@
-const cc = require('camelcase')
-
 const makeSelector = require('src/extractors/makeSelector')
 const functionName = require('src/extractors/functionName')
 const extractTableData = require('src/extractors/extractTableData')
