@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+
+process.env.NODE_PATH = '.'
+require("module").Module._initPaths()
+
+const program = require('commander')
+const mkdirp = require('mkdirp')
+const path = require('path')
+
+const { version } = require('../package.json')
+
+const run = require('src/run')
+const writeCSV = require('src/writeCSV')
+const createFolders = require('src/createFolders')
+
+program
+  .version(version, '-v, --version')
+  .usage('[options]')
+  .option('-o, --output <outputPath>', 'The output path. Defaults to output.csv')
+  .parse(process.argv)
+
+const { output = 'output.csv' } = program
+const outputPath = path.join(process.cwd(), output)
+
+console.log('will write data to', outputPath)
+console.log('ctrl-c to abort')
+
+createFolders(outputPath)
+.then(run)
+.then(writeCSV(outputPath))
+.catch(err => {
+  console.error('Could not complete due to error:', err)
+})
