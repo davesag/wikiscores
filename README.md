@@ -30,6 +30,12 @@ wikiscores -o some/other/output.csv
 
 It will create any folders necessary.
 
+```
+wikiscores --help
+```
+
+for more info.
+
 ## Development
 
 Fork this repo and use the `forked-git-flow` process as outlined in the [Contributing](CONTRIBUTING.md) notes.
@@ -59,4 +65,14 @@ Scrape a list of [Term Opinions](https://en.wikipedia.org/wiki/2000_term_opinion
   "createdAt": "date created in Zulu Time format",
   "creator": "The username of the original editor",
 }
+```
+
+### Test it
+
+* `npm test` — runs the unit tests (quick, runs offline)
+
+### Lint it
+
+```
+npm run lint
 ```
