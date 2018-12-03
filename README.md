@@ -38,8 +38,8 @@ Fork this repo and use the `forked-git-flow` process as outlined in the [Contrib
 
 | Branch | Tests | Code Coverage | Comments |
 | ------ | ----- | ------------- | ---------|
-| `develop` | [] | [] | Latest Staging Release |
-| `master` | [] | [] | Latest Production Release |
+| `develop` | [![CircleCI](https://circleci.com/gh/davesag/wikiscores/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/wikiscores/tree/develop) | [![codecov](https://codecov.io/gh/davesag/wikiscores/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/wikiscores) | Latest Staging Release |
+| `master` | [![CircleCI](https://circleci.com/gh/davesag/wikiscores/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/wikiscores/tree/master) | [![codecov](https://codecov.io/gh/davesag/wikiscores/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/wikiscores) | Latest Production Release |
 
 ### Functional Requirements
 
@@ -50,13 +50,13 @@ Scrape a list of [Term Opinions](https://en.wikipedia.org/wiki/2000_term_opinion
   "title": "Some title",
   "defaultSort": "Some default sort title",
   "length": <the length of the article in bytes>,
-  "articleId": "Some numeric article id",
+  "articleId": <the numeric article id>,
   "contentModel": "wikitext",
-  "watchers": "The number of watchers or the phrase Fewer than 30 watchers",
+  "watchers": "The number of watchers, or the phrase 'Fewer than 30 watchers'",
   "edits": <number of edits>,
   "recentEdits": <number of recent edits>,
   "monthCount": <number of reads in the last month>,
-  "createdAt": "date created",
+  "createdAt": "date created in Zulu Time format",
   "creator": "The username of the original editor",
 }
 ```
