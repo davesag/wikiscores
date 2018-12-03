@@ -26,14 +26,13 @@ const toDate = date => {
     const month = `${MONTHS[monthName]}`.padStart(2, '0')
 
     return `${year}-${month}-${day.padStart(2, '0')}T${hour}:${minute}:00.000Z`
-  } catch (err) {
+  } catch (err) /* istanbul ignore next */ {
     console.error('date', date)
     console.error('threw', err)
     return ''
   }
 }
 
-const noOp = data => data
 const stripCommas = data =>
   typeof data === 'string' ? data.replace(/,/g, '') : data
 const toInt = data => (!data ? 0 : parseInt(stripCommas(data)))

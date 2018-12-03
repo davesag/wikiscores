@@ -8,7 +8,7 @@ const extractData = functions => html => {
   return functions.reduce((acc, elem) => {
     const fnName = functionName(elem)
     const fn = extractors[fnName]
-    if (typeof fn === 'function') acc[elem] = fn($)
+    /* istanbul ignore else */ if (typeof fn === 'function') acc[elem] = fn($)
     return acc
   }, {})
 }
