@@ -1,9 +1,11 @@
+/* istanbul ignore next */
 const isOpinion = $ =>
   function() {
     const title = $(this).text()
     return title.endsWith('term opinions')
   }
 
+/* istanbul ignore next */
 const toData = $ =>
   function() {
     const $this = $(this)

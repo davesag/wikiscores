@@ -48,10 +48,7 @@
       "src/**/*.js"
     ],
     "exclude": [
-      "src/index.js",
-      "src/errors.js",
-      "src/models/index.js",
-      "src/utils/logger.js"
+      "src/index.js"
     ],
     "reporter": [
       "lcov",

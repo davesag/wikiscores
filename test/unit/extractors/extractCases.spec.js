@@ -4,21 +4,21 @@ const { stub } = require('sinon')
 const extractCases = require('src/extractors/extractCases')
 
 describe('src/extractors/extractCases', () => {
-  const fakeCheerio = {
+  const cheerio = {
     filter: stub(),
     map: stub(),
     toArray: stub().returns([])
   }
 
-  fakeCheerio.filter.returns(fakeCheerio)
-  fakeCheerio.map.returns(fakeCheerio)
+  cheerio.filter.returns(cheerio)
+  cheerio.map.returns(cheerio)
 
-  const $ = stub().returns(fakeCheerio)
+  const $ = stub().returns(cheerio)
 
   const resetStubs = () => {
-    fakeCheerio.filter.resetHistory()
-    fakeCheerio.map.resetHistory()
-    fakeCheerio.toArray.resetHistory()
+    cheerio.filter.resetHistory()
+    cheerio.map.resetHistory()
+    cheerio.toArray.resetHistory()
     $.resetHistory()
   }
 
