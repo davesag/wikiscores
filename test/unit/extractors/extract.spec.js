@@ -11,9 +11,9 @@ describe('src/extractors/extract', () => {
   const base = '#base'
 
   const extract = proxyquire('src/extractors/extract', {
-    'src/extractors/makeSelector': makeSelector,
-    'src/extractors/functionName': functionName,
-    'src/extractors/extractTableData': extractTableData
+    './makeSelector': makeSelector,
+    './functionName': functionName,
+    './extractTableData': extractTableData
   })
 
   const resetStubs = () => {

@@ -1,4 +1,4 @@
-const fetch = require('src/fetchers/fetch')
+const fetch = require('./fetch')
 
 const base = 'https://en.wikipedia.org/w/index.php?action=info&title='
 

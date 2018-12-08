@@ -1,17 +1,14 @@
 #!/usr/bin/env node
 
-process.env.NODE_PATH = '.'
-require("module").Module._initPaths()
-
 const program = require('commander')
 const mkdirp = require('mkdirp')
 const path = require('path')
 
 const { version } = require('../package.json')
 
-const run = require('src/run')
-const writeCSV = require('src/writeCSV')
-const createFolders = require('src/createFolders')
+const run = require('../src/run')
+const writeCSV = require('../src/writeCSV')
+const createFolders = require('../src/createFolders')
 
 program
   .version(version, '-v, --version')

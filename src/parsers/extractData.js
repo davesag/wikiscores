@@ -1,7 +1,7 @@
 const cheerio = require('cheerio')
-const functionName = require('src/extractors/functionName')
+const functionName = require('../extractors/functionName')
 
-const extractors = require('src/extractors')
+const extractors = require('../extractors')
 
 const extractData = functions => html => {
   const $ = cheerio.load(html)

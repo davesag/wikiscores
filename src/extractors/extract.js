@@ -1,6 +1,6 @@
-const makeSelector = require('src/extractors/makeSelector')
-const functionName = require('src/extractors/functionName')
-const extractTableData = require('src/extractors/extractTableData')
+const makeSelector = require('./makeSelector')
+const functionName = require('./functionName')
+const extractTableData = require('./extractTableData')
 
 const extract = (extractors, base) =>
   extractors.reduce((acc, [name, sel, suffix]) => {

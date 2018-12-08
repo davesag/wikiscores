@@ -6,7 +6,7 @@ describe('src/parsers/parseCases', () => {
   const extractData = stub()
 
   proxyquire('src/parsers/parseCases', {
-    'src/parsers/extractData': extractData
+    './extractData': extractData
   })
 
   it("called extractData with ['cases']", () => {

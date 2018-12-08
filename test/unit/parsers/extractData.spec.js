@@ -24,8 +24,8 @@ describe('src/parsers/extractData', () => {
 
   const extractData = proxyquire('src/parsers/extractData', {
     cheerio: cheerio,
-    'src/extractors/functionName': functionName,
-    'src/extractors': extractors
+    '../extractors/functionName': functionName,
+    '../extractors': extractors
   })
 
   const html = 'some html'

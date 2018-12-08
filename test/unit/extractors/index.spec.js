@@ -6,7 +6,7 @@ describe('src/extractors', () => {
   const extract = stub()
 
   proxyquire('src/extractors', {
-    'src/extractors/extract': extract
+    './extract': extract
   })
 
   it('called extract', () => {
