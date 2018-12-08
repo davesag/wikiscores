@@ -1,5 +1,5 @@
 const run = require('./run')
-const writeCSV = require('./writeCSV')
+const writeCSV = require('./utils/writeCSV')
 
 run()
   .then(writeCSV('output.csv'))

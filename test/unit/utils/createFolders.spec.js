@@ -2,11 +2,11 @@ const { expect } = require('chai')
 const { stub } = require('sinon')
 const proxyquire = require('proxyquire')
 
-describe('src/createFolders', () => {
+describe('src/utils/createFolders', () => {
   const mkdirp = stub()
   const path = { join: stub(), dirname: stub() }
 
-  const createFolders = proxyquire('src/createFolders', { mkdirp, path })
+  const createFolders = proxyquire('src/utils/createFolders', { mkdirp, path })
 
   const outputPath = 'test/output.csv'
 

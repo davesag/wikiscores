@@ -2,7 +2,7 @@ const { expect } = require('chai')
 const { stub, match } = require('sinon')
 const proxyquire = require('proxyquire')
 
-describe('src/writeCSV', () => {
+describe('src/utils/writeCSV', () => {
   const csvWriter = {
     writeRecords: stub()
   }
@@ -11,7 +11,7 @@ describe('src/writeCSV', () => {
     createObjectCsvWriter: stub().returns(csvWriter)
   }
 
-  const writeCSV = proxyquire('src/writeCSV', {
+  const writeCSV = proxyquire('src/utils/writeCSV', {
     'csv-writer': CSVWriter
   })
 
