@@ -6,7 +6,7 @@ describe('src/fetchers/fetchPageInfo', () => {
   const fetch = stub()
 
   const fetchPageInfo = proxyquire('src/fetchers/fetchPageInfo', {
-    'src/fetchers/fetch': fetch
+    './fetch': fetch
   })
 
   const base = 'https://en.wikipedia.org/w/index.php?action=info&title='

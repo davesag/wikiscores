@@ -1,4 +1,4 @@
-const extractData = require('src/parsers/extractData')
+const extractData = require('./extractData')
 
 module.exports = extractData([
   'title',

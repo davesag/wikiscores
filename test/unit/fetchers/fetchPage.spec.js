@@ -6,7 +6,7 @@ describe('src/fetchers/fetchPage', () => {
   const fetch = stub()
 
   const fetchPage = proxyquire('src/fetchers/fetchPage', {
-    'src/fetchers/fetch': fetch
+    './fetch': fetch
   })
 
   const base = 'https://en.wikipedia.org/wiki/'
