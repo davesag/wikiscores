@@ -7,8 +7,9 @@ const path = require('path')
 const { version } = require('../package.json')
 
 const run = require('../src/run')
-const writeCSV = require('../src/writeCSV')
-const createFolders = require('../src/createFolders')
+const writeCSV = require('../src/utils/writeCSV')
+const createFolders = require('../src/utils/createFolders')
+const normaliseFileName = require('../src/utils/normaliseFileName')
 
 program
   .version(version, '-v, --version')
@@ -17,7 +18,7 @@ program
   .parse(process.argv)
 
 const { output = 'output.csv' } = program
-const outputPath = path.join(process.cwd(), output)
+const outputPath = path.join(process.cwd(), normaliseFileName(output))
 
 console.log('will write data to', outputPath)
 console.log('ctrl-c to abort')
