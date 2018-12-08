@@ -1,6 +1,6 @@
-const extract = require('src/extractors/extract')
-const extractTerms = require('src/extractors/extractTerms')
-const extractCases = require('src/extractors/extractCases')
+const extract = require('./extract')
+const extractTerms = require('./extractTerms')
+const extractCases = require('./extractCases')
 
 const extractors = [
   ['title', 'pageinfo-display-title'],

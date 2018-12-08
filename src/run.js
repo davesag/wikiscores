@@ -1,9 +1,9 @@
-const fetchPage = require('src/fetchers/fetchPage')
-const fetchPageInfo = require('src/fetchers/fetchPageInfo')
-const parseTerms = require('src/parsers/parseTerms')
-const parseCases = require('src/parsers/parseCases')
-const parseInfo = require('src/parsers/parseInfo')
-const convertTypes = require('src/parsers/convertTypes')
+const fetchPage = require('./fetchers/fetchPage')
+const fetchPageInfo = require('./fetchers/fetchPageInfo')
+const parseTerms = require('./parsers/parseTerms')
+const parseCases = require('./parsers/parseCases')
+const parseInfo = require('./parsers/parseInfo')
+const convertTypes = require('./parsers/convertTypes')
 
 const notNull = item => item !== null && item !== undefined
 
