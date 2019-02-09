@@ -24,8 +24,12 @@ This will go to the [Lists_of_United_States_Supreme_Court_cases]() page in wikip
 
 By default it will write it to a file `output.csv` but you can specify the relative file path via the `-o` flag.
 
+You can rate limit it with the `-r` option to specify the max number of requests per second.
+
+You can limit the concurrency with the `-c` option to restrict the number of simultaneous requests.
+
 ```
-wikiscores -o some/other/output.csv
+wikiscores -o some/other/output.csv -r 10 -c 2
 ```
 
 It will create any folders necessary.
