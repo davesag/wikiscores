@@ -1,3 +1,4 @@
+const A_DAY = 24 * 60 * 60 * 1000
 const ACCEPT_STRING =
   'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
 const AGENT_STRING =
@@ -8,6 +9,7 @@ const MAX_THROTTLE_RATE = 99 // requests per second
 const FILE_CACHE = 'wikiscores.db'
 
 module.exports = {
+  A_DAY,
   ACCEPT_STRING,
   AGENT_STRING,
   CASE_LIST_PAGE,

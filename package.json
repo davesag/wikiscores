@@ -95,9 +95,11 @@
     "csv-writer": "^1.2.0",
     "decamelize": "^2.0.0",
     "mkdirp": "^0.5.1",
+    "nedb-promises": "^3.0.2",
     "pluralize": "^7.0.0",
     "query-string": "^6.2.0",
     "superagent": "^4.1.0",
+    "superagent-retry-delay": "^2.3.0",
     "superagent-throttle": "^1.0.1"
   }
 }
