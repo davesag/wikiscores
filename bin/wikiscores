@@ -24,14 +24,16 @@ program
 
 const { output = 'output.csv', rate, concurrent } = program
 const outputPath = path.join(process.cwd(), normaliseFileName(output))
-const throttleRate = rate ? parseInt(rate) : MAX_THROTTLE_RATE
-const concurrency = concurrent ? parseInt(concurrent) : MAX_CONCURRENCY
+const throttleRate = rate ? parseInt(rate) : MAX_THROTTLE_RATE / 2
+const concurrency = concurrent ? parseInt(concurrent) : MAX_CONCURRENCY /2
 
 if (throttleRate > MAX_THROTTLE_RATE)
-  throw new Error(`Throttle Rate must be less than ${MAX_THROTTLE_RATE}`)
+  throw new Error(`Throttle Rate must be less than ${MAX_THROTTLE_RATE} requests per second`)
+if (throttleRate < 1) throw new Error('Throttle Rate must be at least 1 request per second')
 
 if (concurrency > MAX_CONCURRENCY)
   throw new Error(`Concurrency must be less than ${MAX_CONCURRENCY}`)
+if (concurrency < 1) throw new Error('Concurrency must be at least 1 request')
 
 console.log('will write data to', outputPath)
 console.log('throttled to', plural('request', throttleRate, true), 'per second')

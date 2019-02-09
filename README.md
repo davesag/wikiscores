@@ -8,6 +8,8 @@ A Command-line tool that extracts structured data about all of the US Supreme Co
 
 ## Installation
 
+Install `wikiscores` as a global module as follows:
+
 ```
 npm i -g wikiscores
 ```
@@ -20,13 +22,13 @@ From a Terminal run
 wikiscores
 ```
 
-This will go to the [Lists_of_United_States_Supreme_Court_cases]() page in wikipedia and get a list of all of the 'Term Opinions'.  And for Each 'Term Opinion' it grabs the 'Cases', and for each Case it grabs some statistical data.
+This will go to the [Lists_of_United_States_Supreme_Court_cases](https://en.wikipedia.org/wiki/Lists_of_United_States_Supreme_Court_cases) page in wikipedia and get a list of all of the 'Term Opinions'.  And for Each 'Term Opinion' it grabs the 'Cases', and for each Case it grabs some statistical data.
 
-By default it will write it to a file `output.csv` but you can specify the relative file path via the `-o` flag.
+## Options
 
-You can rate limit it with the `-r` option to specify the max number of requests per second.
-
-You can limit the concurrency with the `-c` option to restrict the number of simultaneous requests.
+1. By default it will write it to a file `output.csv` but you can specify the relative file path via the `-o` flag.
+2. You can rate limit it with the `-r` option to specify the max number of requests per second.
+3. You can limit the concurrency with the `-c` option to restrict the number of simultaneous requests.
 
 ```
 wikiscores -o some/other/output.csv -r 10 -c 2

@@ -4,8 +4,8 @@ const ACCEPT_STRING =
 const AGENT_STRING =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
 const CASE_LIST_PAGE = 'Lists_of_United_States_Supreme_Court_cases'
-const MAX_CONCURRENCY = 10 // simultanious requests
-const MAX_THROTTLE_RATE = 99 // requests per second
+const MAX_CONCURRENCY = 4 // simultanious requests
+const MAX_THROTTLE_RATE = 50 // requests per second
 const FILE_CACHE = 'wikiscores.db'
 
 module.exports = {

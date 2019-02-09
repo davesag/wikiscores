@@ -5,9 +5,15 @@
   "main": "src/index.js",
   "bin": "bin/wikiscores",
   "engines": {
-    "node": ">= 10.0.0",
+    "node": ">= 10.15.1",
     "npm": "6.4.1"
   },
+  "files": [
+    "/bin",
+    "/src",
+    "/CONTRIBUTING.md",
+    "/package*.json"
+  ],
   "scripts": {
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "lint": "eslint .",
