@@ -12,7 +12,7 @@ const writeCSV = require('../src/utils/writeCSV')
 const createFolders = require('../src/utils/createFolders')
 const normaliseFileName = require('../src/utils/normaliseFileName')
 const { reset, write } = require('../src/utils/cache')
-const { DEFAULT_THROTTLE_RATE, DEFAULT_CONCURRENCY } = require('../src/constants')
+const { MAX_THROTTLE_RATE, MAX_CONCURRENCY } = require('../src/constants')
 
 program
   .version(version, '-v, --version')
@@ -22,14 +22,20 @@ program
   .option('-c --concurrent <concurrent>', 'The max number of simultanious requests. Defaults to 10')
   .parse(process.argv)
 
-const { output = 'output.csv' } = program
+const { output = 'output.csv', rate, concurrent } = program
 const outputPath = path.join(process.cwd(), normaliseFileName(output))
-const throttleRate = rate ? parseInt(rate) : DEFAULT_THROTTLE_RATE
-const concurrency = concurrent ? parseInt(concurrent) : DEFAULT_CONCURRENCY
+const throttleRate = rate ? parseInt(rate) : MAX_THROTTLE_RATE
+const concurrency = concurrent ? parseInt(concurrent) : MAX_CONCURRENCY
+
+if (throttleRate > MAX_THROTTLE_RATE)
+  throw new Error(`Throttle Rate must be less than ${MAX_THROTTLE_RATE}`)
+
+if (concurrency > MAX_CONCURRENCY)
+  throw new Error(`Concurrency must be less than ${MAX_CONCURRENCY}`)
 
 console.log('will write data to', outputPath)
-console.log('throttled to', throttleRate, plural('request', throttleRate), 'per second')
-console.log('concurrency, plural('request', concurrency), 'at a time')
+console.log('throttled to', plural('request', throttleRate, true), 'per second')
+console.log('concurrency', plural('request', concurrency, true), 'at a time')
 
 console.log('ctrl-c to abort')
 

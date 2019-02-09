@@ -4,11 +4,17 @@ const parseTerms = require('./parsers/parseTerms')
 const parseCases = require('./parsers/parseCases')
 const parseInfo = require('./parsers/parseInfo')
 const convertTypes = require('./parsers/convertTypes')
+const makeThrottle = require('./utils/makeThrottle')
+const { write } = require('./utils/cache')
+
 const { CASE_LIST_PAGE } = require('./constants')
 
 const exists = item => item !== null && item !== undefined
 
 const run = async () => {
+  const throttle = makeThrottle()
+  write('throttle', throttle)
+
   const termsPage = await fetchPage(CASE_LIST_PAGE)
   const { terms } = parseTerms(termsPage)
 

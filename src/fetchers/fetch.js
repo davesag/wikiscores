@@ -1,29 +1,17 @@
 const request = require('superagent')
-const Throttle = require('superagent-throttle')
 const { read } = require('../utils/cache')
-const {
-  ACCEPT_STRING,
-  AGENT_STRING,
-  DEFAULT_CONCURRENCY,
-  DEFAULT_THROTTLE_RATE
-} = require('../constants')
+const makeThrottle = require('../utils/makeThrottle')
+
+const { ACCEPT_STRING, AGENT_STRING } = require('../constants')
 
 const fetch = async url => {
-  const concurrent = read('concurrency') || DEFAULT_CONCURRENCY
-  const rate = read('throttleRate') || DEFAULT_THROTTLE_RATE
-
-  const throttle = new Throttle({
-    rate,
-    concurrent,
-    active: true, // set false to pause queue
-    ratePer: 1000 // number of ms in which `rate` requests may be sent
-  })
+  const throttle = read('throttle') || makeThrottle()
 
   console.log('fetching', url)
   try {
     const res = await request
       .get(url)
-      .use(throttle.plugin())
+      .use(throttle)
       .set('Cache-Control', 'max-age=0')
       .set('Upgrade-Insecure-Requests', 1)
       .set('User-Agent', AGENT_STRING)
