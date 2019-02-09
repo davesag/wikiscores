@@ -11,7 +11,8 @@ describe('src/fetchers/fetch', () => {
 
   const db = {
     findOne: stub(),
-    update: stub()
+    update: stub(),
+    persistence: { compactDatafile: stub() }
   }
 
   const request = {

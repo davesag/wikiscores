@@ -36,6 +36,7 @@ const fetch = async url => {
       throw new Error(`Could not fetch ${url}: got status ${status}`)
     // save it to the cache
     await db.update({ url }, { url, savedAt: new Date(), text })
+    db.persistence.compactDatafile()
     return text
   } catch (err) {
     console.error('url', url)
