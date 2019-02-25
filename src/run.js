@@ -32,10 +32,9 @@ const run = async () => {
   const caseLoad = termPages
     .map(({ year, page }) => ({ year, ...parseCases(page) }))
     .reduce((acc, { year, cases }) => {
-      if (!cases) {
-        console.log('skipped cases for year', year)
+      if (cases) {
+        acc = [...acc, ...cases.map(_case => ({ year, ..._case }))]
       }
-      acc = [...acc, ...cases.map(_case => ({ year, ..._case }))]
       return acc
     }, [])
   console.log('found', caseLoad.length, 'cases')
