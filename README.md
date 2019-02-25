@@ -4,7 +4,7 @@ A Command-line tool that extracts structured data about all of the US Supreme Co
 
 ## Prerequisites
 
-* [Node JS](https://nodejs.org) `brew install node` or `brew install nvm` then `nvm install 11.3.0` (or whatever is the most recent)
+* [Node JS](https://nodejs.org) `brew install node` or `brew install nvm` then `nvm install 11.10.0` (or whatever is the most recent)
 
 ## Installation
 
