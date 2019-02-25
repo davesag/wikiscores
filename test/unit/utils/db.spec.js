@@ -9,11 +9,6 @@ describe('src/utils/db', () => {
     create: stub().returns(database)
   }
 
-  const resetStubs = () => {
-    Datastore.create.resetHistory()
-    database.load.resetHistory()
-  }
-
   const db = proxyquire('src/utils/db', {
     'nedb-promises': Datastore
   })
