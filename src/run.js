@@ -10,8 +10,6 @@ const db = require('./utils/db')
 
 const { CASE_LIST_PAGE } = require('./constants')
 
-const exists = item => item !== null && item !== undefined
-
 const run = async () => {
   await db.ensureIndex({ fieldName: 'url' })
 

@@ -15,10 +15,8 @@ describe('src/utils/makeThrottle', () => {
     'superagent-throttle': Throttle
   })
 
-  let result
-
   before(() => {
-    result = makeThrottle()
+    makeThrottle()
   })
 
   it('called plugin()', () => {
