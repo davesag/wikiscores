@@ -10,8 +10,6 @@ const db = require('./utils/db')
 
 const { CASE_LIST_PAGE } = require('./constants')
 
-const exists = item => item !== null && item !== undefined
-
 const run = async () => {
   await db.ensureIndex({ fieldName: 'url' })
 
@@ -23,24 +21,36 @@ const run = async () => {
   const { terms } = parseTerms(termsPage)
 
   const termPages = await Promise.all(
-    terms.map(({ name }) => fetchPage(name)).filter(exists)
+    terms.map(async ({ year, name }) => ({
+      year,
+      page: await fetchPage(name)
+    }))
   )
   console.log('fetched', termPages.length, 'term pages')
   db.persistence.compactDatafile()
 
-  const caseLoad = termPages.map(parseCases).reduce((acc, { cases }) => {
-    acc = [...acc, ...cases]
-    return acc
-  }, [])
+  const caseLoad = termPages
+    .map(({ year, page }) => ({ year, ...parseCases(page) }))
+    .reduce((acc, { year, cases }) => {
+      if (cases) {
+        acc = [...acc, ...cases.map(_case => ({ year, ..._case }))]
+      }
+      return acc
+    }, [])
   console.log('found', caseLoad.length, 'cases')
 
   const casePages = await Promise.all(
-    caseLoad.map(({ name }) => fetchPageInfo(name)).filter(exists)
+    caseLoad.map(async ({ name, year }) => ({
+      year,
+      page: await fetchPageInfo(name)
+    }))
   )
   console.log('loaded', casePages.length, 'case pages')
   db.persistence.compactDatafile()
 
-  return convertTypes(casePages.map(parseInfo))
+  return convertTypes(
+    casePages.map(({ year, page }) => ({ term: year, ...parseInfo(page) }))
+  )
 }
 
 module.exports = run
