@@ -1,10 +1,10 @@
 # wikiscores
 
-A Command-line tool that extracts structured data about all of the US Supreme Court Cases since 2000.  Developed for my brother to use to harvest some data.
+A Command-line tool that extracts structured data about all of the US Supreme Court Cases since 2000. Developed for my brother to use to harvest some data.
 
 ## Prerequisites
 
-* [Node JS](https://nodejs.org) `brew install node` or `brew install nvm` then `nvm install 11.10.0` (or whatever is the most recent)
+- [Node JS](https://nodejs.org) `brew install node` or `brew install nvm` then `nvm install 11.13.0` (or whatever is the most recent)
 
 ## Installation
 
@@ -22,7 +22,7 @@ From a Terminal run
 wikiscores
 ```
 
-This will go to the [Lists_of_United_States_Supreme_Court_cases](https://en.wikipedia.org/wiki/Lists_of_United_States_Supreme_Court_cases) page in wikipedia and get a list of all of the 'Term Opinions'.  And for Each 'Term Opinion' it grabs the 'Cases', and for each Case it grabs some statistical data.
+This will go to the [Lists_of_United_States_Supreme_Court_cases](https://en.wikipedia.org/wiki/Lists_of_United_States_Supreme_Court_cases) page in wikipedia and get a list of all of the 'Term Opinions'. And for Each 'Term Opinion' it grabs the 'Cases', and for each Case it grabs some statistical data.
 
 ## Options
 
@@ -48,6 +48,7 @@ Fork this repo and use the `forked-git-flow` process as outlined in the [Contrib
 
 ### Branches
 
+<!-- prettier-ignore -->
 | Branch | Tests | Code Coverage | Comments |
 | ------ | ----- | ------------- | ---------|
 | `develop` | [![CircleCI](https://circleci.com/gh/davesag/wikiscores/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/wikiscores/tree/develop) | [![codecov](https://codecov.io/gh/davesag/wikiscores/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/wikiscores) | Latest Staging Release |
@@ -55,19 +56,20 @@ Fork this repo and use the `forked-git-flow` process as outlined in the [Contrib
 
 ### Functional Requirements
 
-Scrape a list of [Term Opinions](https://en.wikipedia.org/wiki/2000_term_opinions_of_the_Supreme_Court_of_the_United_States) from a [list of US Supreme Court Cases](https://en.wikipedia.org/wiki/Lists_of_United_States_Supreme_Court_cases), and from each one grab a list of individual cases.  For each case grab data in the form:
+Scrape a list of [Term Opinions](https://en.wikipedia.org/wiki/2000_term_opinions_of_the_Supreme_Court_of_the_United_States) from a [list of US Supreme Court Cases](https://en.wikipedia.org/wiki/Lists_of_United_States_Supreme_Court_cases), and from each one grab a list of individual cases. For each case grab data in the form:
 
 ```
 {
+  "term": "the term year",
   "title": "Some title",
   "defaultSort": "Some default sort title",
-  "length": <the length of the article in bytes>,
-  "articleId": <the numeric article id>,
+  "length": the length of the article in bytes,
+  "articleId": the numeric article id,
   "contentModel": "wikitext",
   "watchers": "The number of watchers, or the phrase 'Fewer than 30 watchers'",
-  "edits": <number of edits>,
-  "recentEdits": <number of recent edits>,
-  "monthCount": <number of reads in the last month>,
+  "edits": number of edits,
+  "recentEdits": number of recent edits,
+  "monthCount": number of reads in the last month,
   "createdAt": "date created in Zulu Time format",
   "creator": "The username of the original editor",
 }
@@ -75,7 +77,7 @@ Scrape a list of [Term Opinions](https://en.wikipedia.org/wiki/2000_term_opinion
 
 ### Test it
 
-* `npm test` — runs the unit tests (quick, runs offline)
+- `npm test` — runs the unit tests (quick, runs offline)
 
 ### Lint it
 
