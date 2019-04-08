@@ -1,6 +1,6 @@
 {
   "name": "wikiscores",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Command-line tool that extracts structured data about all of the US Supreme Court Cases since 2000",
   "main": "src/index.js",
   "bin": "bin/wikiscores",
