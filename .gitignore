@@ -62,3 +62,6 @@ typings/
 
 # output
 *.csv
+
+# macOS desktop metadata
+.DS_Store
