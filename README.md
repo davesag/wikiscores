@@ -78,6 +78,8 @@ Scrape a list of [Term Opinions](https://en.wikipedia.org/wiki/2000_term_opinion
 ### Test it
 
 - `npm test` — runs the unit tests (quick, runs offline)
+- `npm test:unit:cov` — runs the unit tests with code coverage
+- `npm run test:mutants` — runs the mutation tests
 
 ### Lint it
 
