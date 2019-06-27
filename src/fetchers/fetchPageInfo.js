@@ -1,7 +1,6 @@
 const fetch = require('./fetch')
+const { INFO_BASE } = require('../constants')
 
-const base = 'https://en.wikipedia.org/w/index.php?action=info&title='
-
-const fetchPageInfo = async title => fetch(`${base}${title}`)
+const fetchPageInfo = async title => fetch(`${INFO_BASE}${title}`)
 
 module.exports = fetchPageInfo

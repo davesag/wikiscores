@@ -31,7 +31,6 @@ const fetch = async url => {
       .set('Accept-Language', 'en-US;q=0.9,en;q=0.8')
 
     const { status, text } = res
-    console.log('fetched', url, status)
     if (status !== 200)
       throw new Error(`Could not fetch ${url}: got status ${status}`)
     // save it to the cache

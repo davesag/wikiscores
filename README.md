@@ -4,7 +4,7 @@ A Command-line tool that extracts structured data about all of the US Supreme Co
 
 ## Prerequisites
 
-- [Node JS](https://nodejs.org) `brew install node` or `brew install nvm` then `nvm install 11.13.0` (or whatever is the most recent)
+- [Node JS](https://nodejs.org) `brew install node` or `brew install nvm` then `nvm install 12.4.0` (or whatever is the most recent)
 
 ## Installation
 
@@ -29,12 +29,13 @@ This will go to the [Lists_of_United_States_Supreme_Court_cases](https://en.wiki
 1. By default it will write it to a file `output.csv` but you can specify the relative file path via the `-o` flag.
 2. You can rate limit it with the `-r` option to specify the max number of requests per second.
 3. You can limit the concurrency with the `-c` option to restrict the number of simultaneous requests.
+4. You can filer for a specific case name with the `-f` option. (replace spaces with `_`)
 
 ```sh
-wikiscores -o some/other/output.csv -r 10 -c 2
+wikiscores -o some/other/output.csv -r 10 -c 2 -f Bush_v._Palm_Beach_County
 ```
 
-It will create any folders necessary.
+See
 
 ```sh
 wikiscores --help

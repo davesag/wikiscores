@@ -12,7 +12,7 @@ const extractors = [
   ['edits'],
   ['recentEdits'],
   ['monthCount', 'pvi-month-count'],
-  ['createdAt', 'pageinfo-firsttime'],
+  ['createdAt', 'pageinfo-firsttime', 'a'],
   ['creator', 'pageinfo-firstuser', 'a > bdi'],
   ['terms', extractTerms],
   ['cases', extractCases]
