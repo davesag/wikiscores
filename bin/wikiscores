@@ -14,18 +14,29 @@ const normaliseFileName = require('../src/utils/normaliseFileName')
 const { reset, write } = require('../src/utils/cache')
 const { MAX_THROTTLE_RATE, MAX_CONCURRENCY } = require('../src/constants')
 
+const DEFAULT_THROTTLE_RATE = Math.floor(MAX_THROTTLE_RATE / 2)
+const DEFAULT_CONCURRENCY = Math.floor(MAX_CONCURRENCY / 2)
+
 program
   .version(version, '-v, --version')
   .usage('[options]')
-  .option('-o, --output <outputPath>', 'The output path. Defaults to output.csv')
-  .option('-r --rate <rate>', 'The throttle rate. Defaults to a max of 99 requests per second.')
-  .option('-c --concurrent <concurrent>', 'The max number of simultanious requests. Defaults to 10')
+  .option('-o, --output <outputPath>', 'output path. Defaults to output.csv')
+  .option('-r --rate <rate>', `throttle rate. Defaults to ${DEFAULT_THROTTLE_RATE} requests per second. (Max is ${MAX_THROTTLE_RATE})`)
+  .option('-c --concurrent <concurrent>', `number of simultanious requests. Defaults to ${DEFAULT_CONCURRENCY} (Max is ${MAX_CONCURRENCY})`)
+  .option('-f --filter <filter>', "a specific case name, or part of one. (Replace spaces with '_')")
   .parse(process.argv)
 
-const { output = 'output.csv', rate, concurrent } = program
-const outputPath = path.join(process.cwd(), normaliseFileName(output))
-const throttleRate = rate ? parseInt(rate) : MAX_THROTTLE_RATE / 2
-const concurrency = concurrent ? parseInt(concurrent) : MAX_CONCURRENCY /2
+const { output = 'output.csv', rate, concurrent, filter } = program
+const outputfile = normaliseFileName(output)
+const outputPath = path.join(process.cwd(), outputfile)
+
+// because users will try it on
+const skipfile = outputfile === 'skipped.csv'
+  ? path.join(process.cwd(), 'skipped-cases.csv')
+  : path.join(process.cwd(), 'skipped.csv')
+
+const throttleRate = rate ? parseInt(rate) : DEFAULT_THROTTLE_RATE
+const concurrency = concurrent ? parseInt(concurrent) : DEFAULT_CONCURRENCY
 
 if (throttleRate > MAX_THROTTLE_RATE)
   throw new Error(`Throttle Rate must be less than ${MAX_THROTTLE_RATE} requests per second`)
@@ -39,15 +50,26 @@ console.log('will write data to', outputPath)
 console.log('throttled to', plural('request', throttleRate, true), 'per second')
 console.log('concurrency', plural('request', concurrency, true), 'at a time')
 
-console.log('ctrl-c to abort')
-
 reset()
 write('throttleRate', throttleRate)
 write('concurrency', concurrency)
+if (filter) {
+  try {
+    write('filter', new RegExp(filter, 'i'))
+    console.log('using filter', filter)
+  } catch (err) {
+    console.log('Ignoring invalid regular expression', filter)
+    console.error(err)
+  }
+}
+console.log('ctrl-c to abort')
 
 createFolders(outputPath)
 .then(run)
-.then(writeCSV(outputPath))
+.then(({processed, skipped}) => {
+  if (processed.length) writeCSV(outputPath)(processed)
+  if (skipped.length) writeCSV(skipfile)(skipped)
+})
 .catch(err => {
   console.error('Could not complete due to error:', err)
 })

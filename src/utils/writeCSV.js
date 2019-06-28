@@ -1,11 +1,13 @@
 const CSVWriter = require('csv-writer')
+const { TITLES } = require('../constants')
 
 const createCsvWriter = CSVWriter.createObjectCsvWriter
 
 const writeCSV = (path = 'output.csv') => async records => {
   const header = Object.keys(records[0]).map(title => ({
     id: title,
-    title: `${title.slice(0, 1).toUpperCase()}${title.slice(1)}`
+    title:
+      TITLES[title] || `${title.slice(0, 1).toUpperCase()}${title.slice(1)}`
   }))
 
   const csvWriter = createCsvWriter({ path, header })

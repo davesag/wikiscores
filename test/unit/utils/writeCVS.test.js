@@ -20,9 +20,12 @@ describe('src/utils/writeCSV', () => {
     CSVWriter.createObjectCsvWriter.resetHistory()
   }
 
-  const data = { test: 'test' }
+  const data = { articleId: '123', test: 'test' }
   const records = [data]
-  const header = [{ id: 'test', title: 'Test' }]
+  const header = [
+    { id: 'articleId', title: 'Article Id' },
+    { id: 'test', title: 'Test' }
+  ]
 
   before(() => {
     csvWriter.writeRecords.resolves()

@@ -21,9 +21,9 @@ describe('src/parsers/convertTypes', () => {
   const doTest = (field, value, expected) => {
     context(field, () => {
       it(`converts '${value}' to ${expected}`, () => {
-        expect(convertTypes([{ [field]: value }])).to.deep.equal([
-          { [field]: expected }
-        ])
+        expect(convertTypes({ [field]: value })).to.deep.equal({
+          [field]: expected
+        })
       })
     })
   }

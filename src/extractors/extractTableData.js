@@ -1,6 +1,9 @@
-const extract = (selector, suffix) => $ =>
-  !suffix
-    ? $(`${selector} > td:last-child`).text()
-    : $(`${selector} > td:last-child > ${suffix}`).text()
+const extractTableData = (selector, suffix) => $ => {
+  const sel = suffix
+    ? `${selector} > td:last-child > ${suffix}`
+    : `${selector} > td:last-child`
 
-module.exports = extract
+  return $(sel).text()
+}
+
+module.exports = extractTableData

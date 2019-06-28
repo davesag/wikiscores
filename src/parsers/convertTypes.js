@@ -48,12 +48,10 @@ const CONVERTERS = {
   createdAt: toDate
 }
 
-const convert = data =>
+const convertTypes = data =>
   Object.keys(data).reduce((acc, elem) => {
     acc[elem] = CONVERTERS[elem] ? CONVERTERS[elem](data[elem]) : data[elem]
     return acc
   }, {})
-
-const convertTypes = data => data.map(convert)
 
 module.exports = convertTypes
