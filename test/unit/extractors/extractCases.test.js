@@ -2,12 +2,15 @@ const { expect } = require('chai')
 const { stub } = require('sinon')
 
 const extractCases = require('src/extractors/extractCases')
+const { reset, write } = require('src/utils/cache')
 
 describe('src/extractors/extractCases', () => {
+  const results = [{ name: 'test' }]
+
   const cheerio = {
     filter: stub(),
     map: stub(),
-    toArray: stub().returns([])
+    toArray: stub().returns(results)
   }
 
   cheerio.filter.returns(cheerio)
@@ -15,11 +18,44 @@ describe('src/extractors/extractCases', () => {
 
   const $ = stub().returns(cheerio)
 
-  before(() => {
-    extractCases($)
+  const resetStubs = () => {
+    reset()
+    $.resetHistory()
+  }
+
+  let result
+
+  context('when there is a filter', () => {
+    before(() => {
+      reset()
+      write('filter', new RegExp('not-test', 'i'))
+      result = extractCases($)
+    })
+
+    after(resetStubs)
+
+    it('cheerio was called with the right selector', () => {
+      expect($).to.have.been.calledWith('td > small > i > a')
+    })
+
+    it('returned the filtered result', () => {
+      expect(result).to.deep.equal([])
+    })
   })
 
-  it('cheerio was called with the right selector', () => {
-    expect($).to.have.been.calledWith('td > small > i > a')
+  context('when there is no filter', () => {
+    before(() => {
+      result = extractCases($)
+    })
+
+    after(resetStubs)
+
+    it('cheerio was called with the right selector', () => {
+      expect($).to.have.been.calledWith('td > small > i > a')
+    })
+
+    it('returned the filtered result', () => {
+      expect(result).to.deep.equal(results)
+    })
   })
 })

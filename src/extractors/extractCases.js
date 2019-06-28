@@ -1,4 +1,5 @@
 /* eslint no-unused-vars: "off" */
+const { read } = require('../utils/cache')
 
 const { parse } = require('query-string')
 
@@ -39,17 +40,22 @@ const toData = $ =>
       ? titleFrom(url)
       : undefined
 
-    console.log('name', clean(name))
-
     return { title, parties, name: clean(name) }
   }
 
 // https://en.wikipedia.org/w/index.php?action=info&title=Williamson_v._Mazda_Motor_of_America,_Inc.
 
-const extractCases = $ =>
-  $('td > small > i > a')
+const extractCases = $ => {
+  const filter = read('filter')
+  const limitCases = filter
+    ? ({ name }) => name.match(filter) !== null
+    : () => true
+
+  return $('td > small > i > a')
     .filter(isCase($))
     .map(toData($))
     .toArray()
+    .filter(limitCases)
+}
 
 module.exports = extractCases
