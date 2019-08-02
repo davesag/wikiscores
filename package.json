@@ -1,12 +1,12 @@
 {
   "name": "wikiscores",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Command-line tool that extracts structured data about all of the US Supreme Court Cases since 2000",
   "main": "src/index.js",
   "bin": "bin/wikiscores",
   "engines": {
-    "node": ">= 10.15.3",
-    "npm": ">= 6.4.1"
+    "node": ">= 10.16.1",
+    "npm": ">= 6.5.0"
   },
   "files": [
     "/bin",
@@ -43,12 +43,10 @@
     }
   },
   "lint-staged": {
-    "linters": {
-      "**/*.{js,json,md}": [
-        "prettier --write",
-        "git add"
-      ]
-    }
+    "**/*.{js,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "nyc": {
     "check-coverage": true,
@@ -72,30 +70,30 @@
     "cache": true
   },
   "devDependencies": {
-    "@stryker-mutator/core": "^2.0.0",
-    "@stryker-mutator/javascript-mutator": "^2.0.0",
-    "@stryker-mutator/mocha-framework": "^2.0.0",
-    "@stryker-mutator/mocha-runner": "^2.0.0",
-    "ajv": "^6.10.0",
+    "@stryker-mutator/core": "^2.0.2",
+    "@stryker-mutator/javascript-mutator": "^2.0.2",
+    "@stryker-mutator/mocha-framework": "^2.0.2",
+    "@stryker-mutator/mocha-runner": "^2.0.2",
+    "ajv": "^6.10.2",
     "chai": "^4.2.0",
     "chai-almost": "^1.0.1",
     "chai-as-promised": "^7.1.1",
-    "eslint": "^6.0.1",
+    "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-mocha": "^5.3.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-mocha": "^6.0.0",
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "faker": "^4.1.0",
-    "husky": "^2.7.0",
-    "lint-staged": "^8.2.1",
-    "mocha": "^6.1.4",
+    "husky": "^3.0.2",
+    "lint-staged": "^9.2.1",
+    "mocha": "^6.2.0",
     "nyc": "^14.1.1",
     "prettier": "^1.18.2",
-    "proxyquire": "^2.1.0",
+    "proxyquire": "^2.1.1",
     "sinon": "^7.3.2",
     "sinon-chai": "^3.3.0"
   },
@@ -108,12 +106,12 @@
     "camelcase": "^5.3.1",
     "cheerio": "^1.0.0-rc.3",
     "commander": "^2.20.0",
-    "csv-writer": "^1.4.0",
+    "csv-writer": "^1.5.0",
     "decamelize": "^3.2.0",
     "mkdirp": "^0.5.1",
-    "nedb-promises": "^3.0.6",
+    "nedb-promises": "^3.0.7",
     "pluralize": "^8.0.0",
-    "query-string": "^6.8.1",
+    "query-string": "^6.8.2",
     "superagent": "^5.1.0",
     "superagent-retry-delay": "^2.3.0",
     "superagent-throttle": "^1.0.1"
