@@ -2,18 +2,30 @@
   "name": "wikiscores",
   "version": "1.1.2",
   "description": "Command-line tool that extracts structured data about all of the US Supreme Court Cases since 2000",
+  "author": "Dave Sag <davesag@gmail.com>",
+  "type": "commonjs",
+  "license": "MIT",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/davesag"
+  },
   "main": "src/index.js",
   "bin": "bin/wikiscores",
   "engines": {
     "node": ">= 10.16.1",
     "npm": ">= 6.5.0"
   },
+  "preferGlobal": true,
   "files": [
-    "/bin",
-    "/src",
-    "/CONTRIBUTING.md",
-    "/package*.json"
+    "bin",
+    "src",
+    "CONTRIBUTING.md"
   ],
+  "directories": {
+    "bin": "bin",
+    "lib": "src",
+    "test": "test"
+  },
   "scripts": {
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "lint": "eslint .",
@@ -27,47 +39,27 @@
   "keywords": [
     "wikipedia"
   ],
-  "author": "Dave Sag <davesag@gmail.com>",
   "contributors": [
     "Matthew Sag <matthewsag@gmail.com>"
   ],
-  "license": "MIT",
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "proseWrap": "never"
+  "repository": "https://github.com/davesag/wikiscores.git",
+  "bugs": {
+    "url": "https://github.com/davesag/wikiscores/issues"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "**/*.{js,json,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "nyc": {
-    "check-coverage": true,
-    "per-file": true,
-    "lines": 100,
-    "statements": 100,
-    "functions": 100,
-    "branches": 100,
-    "include": [
-      "src/**/*.js"
-    ],
-    "exclude": [
-      "src/index.js",
-      "src/run.js"
-    ],
-    "reporter": [
-      "lcov",
-      "text"
-    ],
-    "all": true,
-    "cache": true
+  "homepage": "https://github.com/davesag/wikiscores#readme",
+  "dependencies": {
+    "camelcase": "^5.3.1",
+    "cheerio": "^1.0.0-rc.3",
+    "commander": "^2.20.3",
+    "csv-writer": "^1.5.0",
+    "decamelize": "^3.2.0",
+    "mkdirp": "^0.5.1",
+    "nedb-promises": "^3.0.7",
+    "pluralize": "^8.0.0",
+    "query-string": "^6.9.0",
+    "superagent": "^5.1.0",
+    "superagent-retry-delay": "^2.3.0",
+    "superagent-throttle": "^1.0.1"
   },
   "devDependencies": {
     "@stryker-mutator/core": "^2.3.0",
@@ -97,23 +89,41 @@
     "sinon": "^7.5.0",
     "sinon-chai": "^3.3.0"
   },
-  "repository": "https://github.com/davesag/wikiscores.git",
-  "bugs": {
-    "url": "https://github.com/davesag/wikiscores/issues"
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "proseWrap": "never"
   },
-  "homepage": "https://github.com/davesag/wikiscores#readme",
-  "dependencies": {
-    "camelcase": "^5.3.1",
-    "cheerio": "^1.0.0-rc.3",
-    "commander": "^2.20.3",
-    "csv-writer": "^1.5.0",
-    "decamelize": "^3.2.0",
-    "mkdirp": "^0.5.1",
-    "nedb-promises": "^3.0.7",
-    "pluralize": "^8.0.0",
-    "query-string": "^6.9.0",
-    "superagent": "^5.1.0",
-    "superagent-retry-delay": "^2.3.0",
-    "superagent-throttle": "^1.0.1"
+  "lint-staged": {
+    "**/*.{js,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 100,
+    "statements": 100,
+    "functions": 100,
+    "branches": 100,
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "src/index.js",
+      "src/run.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "all": true,
+    "cache": true
   }
 }
