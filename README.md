@@ -50,10 +50,10 @@ Fork this repo and use the `forked-git-flow` process as outlined in the [Contrib
 ### Branches
 
 <!-- prettier-ignore -->
-| Branch | Tests | Code Coverage | Comments |
-| ------ | ----- | ------------- | ---------|
-| `develop` | [![CircleCI](https://circleci.com/gh/davesag/wikiscores/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/wikiscores/tree/develop) | [![codecov](https://codecov.io/gh/davesag/wikiscores/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/wikiscores) | Latest Staging Release |
-| `master` | [![CircleCI](https://circleci.com/gh/davesag/wikiscores/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/wikiscores/tree/master) | [![codecov](https://codecov.io/gh/davesag/wikiscores/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/wikiscores) | Latest Production Release |
+| Branch | Tests | Code Coverage | Audit | Comments |
+| ------ | ----- | ------------- | ----- | ---------|
+| `develop` | [![CircleCI](https://circleci.com/gh/davesag/wikiscores/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/wikiscores/tree/develop) | [![codecov](https://codecov.io/gh/davesag/wikiscores/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/wikiscores) | [![Vulnerabilities](https://snyk.io/test/github/davesag/wikiscores/develop/badge.svg)](https://snyk.io/test/github/davesag/wikiscores/develop) | Latest Staging Release |
+| `master` | [![CircleCI](https://circleci.com/gh/davesag/wikiscores/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/wikiscores/tree/master) | [![codecov](https://codecov.io/gh/davesag/wikiscores/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/wikiscores) | [![Vulnerabilities](https://snyk.io/test/github/davesag/wikiscores/develop/badge.svg)](https://snyk.io/test/github/davesag/wikiscores/develop) | Latest Production Release |
 
 ### Functional Requirements
 
