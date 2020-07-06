@@ -1,13 +1,13 @@
 /* istanbul ignore next */
 const isOpinion = $ =>
-  function() {
+  function () {
     const title = $(this).text()
     return title.endsWith('term opinions')
   }
 
 /* istanbul ignore next */
 const toData = $ =>
-  function() {
+  function () {
     const $this = $(this)
     const text = $this.text()
     const year = parseInt(text.slice(0, 4))
@@ -17,9 +17,6 @@ const toData = $ =>
   }
 
 const extractTerms = $ =>
-  $('li > a')
-    .filter(isOpinion($))
-    .map(toData($))
-    .toArray()
+  $('li > a').filter(isOpinion($)).map(toData($)).toArray()
 
 module.exports = extractTerms
