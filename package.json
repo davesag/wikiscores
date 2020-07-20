@@ -1,6 +1,6 @@
 {
   "name": "wikiscores",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Command-line tool that extracts structured data about all of the US Supreme Court Cases since 2000",
   "author": "Dave Sag <davesag@gmail.com>",
   "type": "commonjs",
