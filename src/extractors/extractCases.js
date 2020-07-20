@@ -5,7 +5,7 @@ const { parse } = require('query-string')
 
 /* istanbul ignore next */
 const isCase = $ =>
-  function() {
+  function () {
     const title = $(this).text()
     return title.includes(' v. ')
   }
@@ -29,7 +29,7 @@ const clean = name => replaceIllegalCharacters(stripHash(name))
 
 /* istanbul ignore next */
 const toData = $ =>
-  function() {
+  function () {
     const $this = $(this)
     const title = $this.closest('td').text()
     const parties = $this.text()
