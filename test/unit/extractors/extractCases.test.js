@@ -28,7 +28,7 @@ describe('src/extractors/extractCases', () => {
   context('when there is a filter', () => {
     before(() => {
       reset()
-      write('filter', new RegExp('not-test', 'i'))
+      write('filter', /not-test/i)
       result = extractCases($)
     })
 

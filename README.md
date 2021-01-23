@@ -4,7 +4,7 @@ A Command-line tool that extracts structured data about all of the US Supreme Co
 
 ## Prerequisites
 
-- [Node JS](https://nodejs.org) `brew install node` or `brew install nvm` then `nvm install 12.18.2` (or whatever is the most recent LTS version)
+- [Node JS](https://nodejs.org) `brew install node` or `brew install nvm` then `nvm install 14.15.0` (or whatever is the most recent LTS version)
 
 ## Installation
 
@@ -80,7 +80,6 @@ Scrape a list of [Term Opinions](https://en.wikipedia.org/wiki/2000_term_opinion
 
 - `npm test` — runs the unit tests (quick, runs offline)
 - `npm test:unit:cov` — runs the unit tests with code coverage
-- `npm run test:mutants` — runs the mutation tests
 
 ### Lint it
 
