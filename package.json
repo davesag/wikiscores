@@ -12,8 +12,7 @@
   "main": "src/index.js",
   "bin": "bin/wikiscores",
   "engines": {
-    "node": ">= 10.16.1",
-    "npm": ">= 6.5.0"
+    "node": ">= 10.16.1"
   },
   "preferGlobal": true,
   "files": [
@@ -34,7 +33,6 @@
     "test": "npm run test:unit",
     "test:unit": "NODE_ENV=test NODE_PATH=. mocha ./test/unit/ --require ./test/unitTestHelper.js --recursive",
     "test:unit:cov": "NODE_ENV=test NODE_PATH=. nyc mocha ./test/unit/ --require ./test/unitTestHelper.js --recursive",
-    "test:mutants": "NODE_ENV=test NODE_PATH=. npx stryker run",
     "snyk-protect": "snyk protect"
   },
   "keywords": [
@@ -51,9 +49,9 @@
   "dependencies": {
     "camelcase": "^6.0.0",
     "cheerio": "^1.0.0-rc.3",
-    "commander": "^6.1.0",
+    "commander": "^7.0.0",
     "csv-writer": "^1.6.0",
-    "decamelize": "^4.0.0",
+    "decamelize": "^5.0.0",
     "mkdirp": "^1.0.4",
     "nedb-promises": "^4.1.0",
     "pluralize": "^8.0.0",
@@ -62,21 +60,18 @@
     "superagent-throttle": "^1.0.1"
   },
   "devDependencies": {
-    "@stryker-mutator/core": "^4.0.0",
-    "@stryker-mutator/mocha-runner": "^4.0.0",
-    "ajv": "^6.12.5",
+    "ajv": "^7.0.3",
     "chai": "^4.2.0",
     "chai-almost": "^1.0.1",
     "chai-as-promised": "^7.1.1",
     "eslint": "^7.10.0",
-    "eslint-config-prettier": "^6.12.0",
-    "eslint-config-standard": "^14.1.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-mocha": "^8.0.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
     "faker": "^5.1.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.0",
