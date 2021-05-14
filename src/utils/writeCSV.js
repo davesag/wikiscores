@@ -3,18 +3,20 @@ const { TITLES } = require('../constants')
 
 const createCsvWriter = CSVWriter.createObjectCsvWriter
 
-const writeCSV = (path = 'output.csv') => async records => {
-  const header = Object.keys(records[0]).map(title => ({
-    id: title,
-    title:
-      TITLES[title] || `${title.slice(0, 1).toUpperCase()}${title.slice(1)}`
-  }))
+const writeCSV =
+  (path = 'output.csv') =>
+  async records => {
+    const header = Object.keys(records[0]).map(title => ({
+      id: title,
+      title:
+        TITLES[title] || `${title.slice(0, 1).toUpperCase()}${title.slice(1)}`
+    }))
 
-  const csvWriter = createCsvWriter({ path, header })
+    const csvWriter = createCsvWriter({ path, header })
 
-  await csvWriter.writeRecords(records) // returns a promise
+    await csvWriter.writeRecords(records) // returns a promise
 
-  console.log('Data written to', path)
-}
+    console.log('Data written to', path)
+  }
 
 module.exports = writeCSV
